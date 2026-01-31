@@ -1,0 +1,28 @@
+<h2>Bike List</h2>
+<a href="{% url 'bike_create' %}">Add Bike</a>
+<hr>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Price</th>
+    <th>Mileage</th>
+    <th>Available</th>
+    <th>Actions</th>
+  </tr>
+
+  {% for bike in bikes %}
+  <tr>
+    <td>{{ bike.brand }}</td>
+    <td>{{ bike.model }}</td>
+    <td>{{ bike.price }}</td>
+    <td>{{ bike.mileage }} km/l</td>
+    <td>{{ bike.is_available }}</td>
+    <td>
+      <a href="{% url 'bike_update' bike.id %}">Edit</a> |
+      <a href="{% url 'bike_delete' bike.id %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
